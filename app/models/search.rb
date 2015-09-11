@@ -4,10 +4,19 @@ class Search < ActiveRecord::Base
 
   validate :waypoint_must_can_be_found
 
+  before_create :to_uppercase
+
   def search_result
     @transit ||= GoogleDirection.new(self.origin, self.destination)
     data = @transit.data_parser
     return data
+  end
+
+  private
+
+  def to_uppercase
+    self.origin.upcase!
+    self.destination.upcase!
   end
 
   def waypoint_must_can_be_found

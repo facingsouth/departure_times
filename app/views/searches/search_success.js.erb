@@ -1,5 +1,8 @@
-var searchResult = "<%= j( render partial: "search_result", locals: { search: @search, result: @result } ) %>"
+var searchResult = "<%= j( render partial: "search_result", locals: { search: @search, result: @result } ) %>";
 var $searchResult = $( searchResult );
 
 var $searchResultTable = $("[dataType='search-result-table']");
 $searchResult.prependTo( $searchResultTable ).hide().slideDown(500);
+
+$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").hide().fadeIn(500);
+<% flash.clear %>

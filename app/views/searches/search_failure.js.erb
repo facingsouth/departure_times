@@ -1,9 +1,12 @@
-$origin = $('[name="search[origin]"]')
-$origin_error = $('<span> <%= @search.errors.messages[:origin][0] %> </span>')
-$origin_error.addClass("error")
-$origin_error.insertAfter($origin).delay(1000).fadeOut(500, $(this).remove)
+$origin = $('[name="search[origin]"]');
+$origin_error = $('<span> <%= @search.errors.messages[:origin][0] %> </span>');
+$origin_error.addClass("error");
+$origin_error.insertAfter($origin).delay(1000).fadeOut(500, $(this).remove);
 
-$destination = $('[name="search[destination]"]')
-$destination_error = $('<span> <%= @search.errors.messages[:destination][0] %> </span>')
-$destination_error.addClass("error")
-$destination_error.insertAfter($destination).delay(1000).fadeOut(500, $(this).remove)
+$destination = $('[name="search[destination]"]');
+$destination_error = $('<span> <%= @search.errors.messages[:destination][0] %> </span>');
+$destination_error.addClass("error");
+$destination_error.insertAfter($destination).delay(1000).fadeOut(500, $(this).remove);
+
+$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").hide().fadeIn(500);
+<% flash.clear %>

@@ -9,6 +9,11 @@
 <body>
   
   <div class="container">
+    <div class="row float_center">
+      <div id ="flash-messages" class="child">
+        <%= render partial: "shared/flash" %>
+      </div>
+    </div>
     <%= yield %>
   </div>
 
