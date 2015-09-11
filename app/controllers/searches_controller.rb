@@ -2,7 +2,10 @@ class SearchesController < ApplicationController
 
   def new
     @search = Search.new
-    @ip = request.remote_ip
+    # @ip = "67.160.204.113" #request.remote_ip
+    request.remote_ip
+    @ip = request.env["HTTP_X_FORWARDED_FOR"]
+    @addr = Geocoder.search(@ip)
   end
 
   def create
