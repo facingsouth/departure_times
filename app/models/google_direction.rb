@@ -1,6 +1,5 @@
 class GoogleDirection
 
-  # DRIVING_COST_PER_MILE = 0.35
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
   include HTTParty
@@ -25,6 +24,10 @@ class GoogleDirection
     #           :mode     => travel_mode,
     #           :availability => 5.0
     # }
+    @data = { :agency         => agency(response),
+              :departure_time => departure_time(response),
+              :departure_stop => departure_stop(response)
+    }
   end
 
   # private
@@ -40,25 +43,33 @@ class GoogleDirection
     self.class.get('/maps/api/directions/json', parameters)
   end
 
-  # def distance(response) # In miles
-  #   (response["routes"][0]["legs"][0]["distance"]["value"] / 1609.34).round(2)
-  # end
+  def agency(response)
+    find_transit(response)
+    @transit_details["line"]["agencies"][0]["name"]
+  end
 
-  # def duration(response) # In minutes
-  #   (response["routes"][0]["legs"][0]["duration"]["value"] / 60.to_f).round
-  # end
+  def departure_time(response)
+    find_transit(response)
+    @transit_details["departure_time"]["text"]
+  end
 
-  # def price(response) # In USD
-  #   if travel_mode == "transit"
-  #     if response["routes"][0].keys.include?("fare")
-  #       response["routes"][0]["fare"]["text"]
-  #     else
-  #       "Not available"
-  #     end
-  #   elsif travel_mode == "driving"
-  #     "$#{(distance(response) * DRIVING_COST_PER_MILE).round(2)}"
-  #   end
-  # end
+  def departure_stop(response)
+    find_transit(response)
+    @transit_details["departure_stop"]["name"]
+  end
+
+  def find_transit(response)
+    unless @transit_details
+      steps = response["routes"][0]["legs"][0]["steps"]
+      steps.each do |step|
+        if step["travel_mode"] == "TRANSIT"
+          @transit_details = step["transit_details"]
+          puts "find it"
+          break
+        end
+      end
+    end
+  end
 
   def origin
     @origin
@@ -68,8 +79,8 @@ class GoogleDirection
     @destination
   end
 
-  # def travel_mode
-  #   @travel_mode
-  # end
+  def travel_mode
+    @travel_mode
+  end
 
 end

@@ -1,18 +1,20 @@
-<table class="table-striped">
+<table class="table table-striped">
   <thead>
     <tr>
-      <td>Origin</td>
-      <td>Destination</td>
-      <td>Agency</td>
-      <td>Departure Time</td>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Agency</th>
+      <th>Departure Time</th>
+      <th>Departure Stop</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><%= @search.origin %></td>
+      <td><%= @search.destination %></td>
+      <td><%= @result[:agency] %></td>
+      <td><%= @result[:departure_time] %></td>
+      <td><%= @result[:departure_stop] %></td>
     </tr>
   </tbody>
 </table>
