@@ -1,4 +1,4 @@
-<%= simple_form_for search, remote: true, html: {class: "form-group"} do |search_field| %>
+<%= simple_form_for search, remote: true, authenticity_token: true, html: {class: "form-group"} do |search_field| %>
   <div class="col-sm-12">
     <%= search_field.input :origin, 
                            placeholder: "Enter your origin address", 
