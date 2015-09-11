@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Agency</th>
+      <th>Departure Time</th>
+      <th>Departure Stop</th>
+    </tr>
+  </thead>
+  <tbody dataType='search-result-table'>
+    <%= render partial: "search_result", locals: { search: @search, result: @result } %>
+  </tbody>
+</table>

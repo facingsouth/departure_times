@@ -1,0 +1,5 @@
+var searchResult = "<%= j( render partial: "search_result" ) %>"
+var $searchResult = $( searchResult );
+
+var $searchResultTable = $("[dataType='search-result-table']");
+$searchResult.prependTo( $searchResultTable ).hide().slideDown(500);

@@ -1,0 +1,19 @@
+<%= simple_form_for search, html: {class: "form-group"} do |search_field| %>
+  <div class="col-sm-12">
+    <%= search_field.input :origin, 
+                           placeholder: "Enter your origin address", 
+                           label: false,
+                           input_html: {class: "form-control"} %>
+  </div>
+
+  <div class="col-sm-12">
+    <%= search_field.input :destination, 
+                           placeholder: "Enter your destination address", 
+                           label: false,
+                           input_html: {class: "form-control"} %>
+  </div>
+
+  <div class="col-sm-8 col-sm-offset-2">
+    <%= search_field.submit "SEARCH", class: "btn btn-success btn-block" %>
+  </div>
+<% end %>

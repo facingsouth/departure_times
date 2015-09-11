@@ -17,16 +17,26 @@ class SearchesController < ApplicationController
   def create
     @search = Search.new(search_params)
     if @search.save
-      redirect_to @search
+      respond_to do |format|
+        format.html { redirect_to @search }
+        format.js { redirect_to @search }
+      end
     else
       flash[:error] = "Invalid search."
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.js { render :search_failure }
+      end
     end
   end
 
   def show
     @search = Search.find(params[:id])
     @result = @search.search_result
+    respond_to do |format|
+      format.html
+      format.js { render :search_success }
+    end
   end
 
   private

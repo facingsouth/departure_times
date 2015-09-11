@@ -45,17 +45,29 @@ class GoogleDirection
 
   def agency(response)
     find_transit(response)
-    @transit_details["line"]["agencies"][0]["name"]
+    begin
+      @transit_details["line"]["agencies"][0]["name"]
+    rescue
+      "Not available!"
+    end
   end
 
   def departure_time(response)
     find_transit(response)
-    @transit_details["departure_time"]["text"]
+    begin
+      @transit_details["departure_time"]["text"]
+    rescue
+      "Not available!"
+    end
   end
 
   def departure_stop(response)
     find_transit(response)
-    @transit_details["departure_stop"]["name"]
+    begin
+      @transit_details["departure_stop"]["name"]
+    rescue
+      "Not available!"
+    end
   end
 
   def find_transit(response)

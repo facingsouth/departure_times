@@ -1,0 +1,9 @@
+<% if result %>
+  <tr>
+    <td><%= search.origin %></td>
+    <td><%= search.destination %></td>
+    <td><%= result[:agency] %></td>
+    <td><%= result[:departure_time] %></td>
+    <td><%= result[:departure_stop] %></td>
+  </tr>
+<% end %>
