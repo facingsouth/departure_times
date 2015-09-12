@@ -26,10 +26,13 @@ class SearchesController < ApplicationController
   def show
     @search = Search.find(params[:id])
     @result = @search.search_result
+    map = GoogleMap.new(@search.origin, @search.destination)
+    @map_url = map.build_url
     respond_to do |format|
       format.html
       format.js { render :search_success }
     end
+    
   end
 
   private

@@ -1,8 +1,23 @@
+
+// Add new search result to the search result table
 var searchResult = "<%= j( render partial: "search_result", locals: { search: @search, result: @result } ) %>";
 var $searchResult = $( searchResult );
 
 var $searchResultTable = $("[dataType='search-result-table']");
-$searchResult.prependTo( $searchResultTable ).hide().slideDown(500);
+$searchResult.prependTo( $searchResultTable )
+             .hide()
+             .slideDown(500);
 
-$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").hide().fadeIn(500);
+// Replace the google map
+var googleMap = "<%= j( render partial: "google_map", locals: { map_url: @map_url } ) %>";
+var $googleMap = $( googleMap );
+
+var $googleMapFrame = $("[dataType='google-map']");
+$googleMapFrame.empty()
+               .append($googleMap);
+
+// Add flash message
+$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>")
+                    .hide()
+                    .fadeIn(500);
 <% flash.clear %>

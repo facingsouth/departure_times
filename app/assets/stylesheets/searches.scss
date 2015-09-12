@@ -17,5 +17,17 @@
 
 #flash-messages {
   font-size: 1.5em;
-  background-color: yellow;
+  background-color: #66FF99;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.form-control {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+span.error {
+  background-color: #FF9999;
+  border-radius: 3px;
 }

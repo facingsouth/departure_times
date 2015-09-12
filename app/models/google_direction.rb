@@ -18,12 +18,7 @@ class GoogleDirection
     response = get_response
     return @data = { :status => "service not available" } unless response
     return @data = { :status => response["status"] } unless response["status"] == "OK"
-    # @data = { :distance => distance(response),
-    #           :duration => duration(response),
-    #           :price    => price(response),
-    #           :mode     => travel_mode,
-    #           :availability => 5.0
-    # }
+
     @data = { :agency         => agency(response),
               :departure_time => departure_time(response),
               :departure_stop => departure_stop(response)
