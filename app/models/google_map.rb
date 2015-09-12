@@ -12,8 +12,7 @@ class GoogleMap
   end
 
   def build_url
-
-    "https://www.google.com/maps/embed/v1/directions?origin=#{@origin}&destination=#{@destination}&key=AIzaSyBJHptJsjF1gs_K-Y595e9JmUx24VMQtgo"
+    "https://www.google.com/maps/embed/v1/directions?origin=#{@origin}&destination=#{@destination}&mode=transit&key=AIzaSyBJHptJsjF1gs_K-Y595e9JmUx24VMQtgo"
   end
 
 end
